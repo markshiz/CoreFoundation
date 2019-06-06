@@ -7,7 +7,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := corefoundationlite
 
 # Support includes in format <CoreFoundation/CFBase.h>
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/..
+LOCAL_C_INCLUDES := $(LOCAL_PATH) $(LOCAL_PATH)/CoreFoundation
 
 # removed files: 
 # CFBundle.c -- also removed in Linux
@@ -23,66 +23,66 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/..
 # CFUserNotification.c
 
 LOCAL_SRC_FILES := \
-CFApplicationPreferences.c \
-CFArray.c \
-CFBag.c \
-CFBase.c \
-CFBasicHash.c \
-CFBigNumber.c \
-CFBinaryHeap.c \
-CFBinaryPList.c \
-CFBitVector.c \
-CFBuiltinConverters.c \
-CFBurstTrie.c \
-CFCalendar.c \
-CFCharacterSet.c \
-CFConcreteStreams.c \
-CFData.c \
-CFDate.c \
-CFDateFormatter.c \
-CFDictionary.c \
-CFError.c \
-CFFileUtilities.c \
-CFICUConverters.c \
-CFLocale.c \
-CFLocaleIdentifier.c \
-CFLocaleKeys.c \
-CFNumber.c \
-CFNumberFormatter.c \
-CFOldStylePList.c \
-CFPlatform.c \
-CFPlatformConverters.c \
-CFPreferences.c \
-CFPropertyList.c \
-CFRuntime.c \
-CFSet.c \
-CFSocketStream.c \
-CFSortFunctions.c \
-CFStorage.c \
-CFStream.c \
-CFString.c \
-CFStringEncodingConverter.c \
-CFStringEncodingDatabase.c \
-CFStringEncodings.c \
-CFStringScanner.c \
-CFStringUtilities.c \
-CFSystemDirectories.c \
-CFTimeZone.c \
-CFTree.c \
-CFURL.c \
-CFURLAccess.c \
-CFUUID.c \
-CFUniChar.c \
-CFUnicodeDecomposition.c \
-CFUnicodePrecomposition.c \
-CFUtilities.c \
-CFVersion.c \
-CFWindowsUtilities.c \
-CFXMLInputStream.c \
-CFXMLNode.c \
-CFXMLParser.c \
-CFXMLPreferencesDomain.c \
-CFXMLTree.c 
+CoreFoundation/CFApplicationPreferences.c \
+CoreFoundation/CFArray.c \
+CoreFoundation/CFBag.c \
+CoreFoundation/CFBase.c \
+CoreFoundation/CFBasicHash.c \
+CoreFoundation/CFBigNumber.c \
+CoreFoundation/CFBinaryHeap.c \
+CoreFoundation/CFBinaryPList.c \
+CoreFoundation/CFBitVector.c \
+CoreFoundation/CFBuiltinConverters.c \
+CoreFoundation/CFBurstTrie.c \
+CoreFoundation/CFCalendar.c \
+CoreFoundation/CFCharacterSet.c \
+CoreFoundation/CFConcreteStreams.c \
+CoreFoundation/CFData.c \
+CoreFoundation/CFDate.c \
+CoreFoundation/CFDateFormatter.c \
+CoreFoundation/CFDictionary.c \
+CoreFoundation/CFError.c \
+CoreFoundation/CFFileUtilities.c \
+CoreFoundation/CFICUConverters.c \
+CoreFoundation/CFLocale.c \
+CoreFoundation/CFLocaleIdentifier.c \
+CoreFoundation/CFLocaleKeys.c \
+CoreFoundation/CFNumber.c \
+CoreFoundation/CFNumberFormatter.c \
+CoreFoundation/CFOldStylePList.c \
+CoreFoundation/CFPlatform.c \
+CoreFoundation/CFPlatformConverters.c \
+CoreFoundation/CFPreferences.c \
+CoreFoundation/CFPropertyList.c \
+CoreFoundation/CFRuntime.c \
+CoreFoundation/CFSet.c \
+CoreFoundation/CFSocketStream.c \
+CoreFoundation/CFSortFunctions.c \
+CoreFoundation/CFStorage.c \
+CoreFoundation/CFStream.c \
+CoreFoundation/CFString.c \
+CoreFoundation/CFStringEncodingConverter.c \
+CoreFoundation/CFStringEncodingDatabase.c \
+CoreFoundation/CFStringEncodings.c \
+CoreFoundation/CFStringScanner.c \
+CoreFoundation/CFStringUtilities.c \
+CoreFoundation/CFSystemDirectories.c \
+CoreFoundation/CFTimeZone.c \
+CoreFoundation/CFTree.c \
+CoreFoundation/CFURL.c \
+CoreFoundation/CFURLAccess.c \
+CoreFoundation/CFUUID.c \
+CoreFoundation/CFUniChar.c \
+CoreFoundation/CFUnicodeDecomposition.c \
+CoreFoundation/CFUnicodePrecomposition.c \
+CoreFoundation/CFUtilities.c \
+CoreFoundation/CFVersion.c \
+CoreFoundation/CFWindowsUtilities.c \
+CoreFoundation/CFXMLInputStream.c \
+CoreFoundation/CFXMLNode.c \
+CoreFoundation/CFXMLParser.c \
+CoreFoundation/CFXMLPreferencesDomain.c \
+CoreFoundation/CFXMLTree.c 
 
 # todo: remove Linux case
 LOCAL_EXPORT_CFLAGS := -DDEPLOYMENT_TARGET_LINUX -DDEPLOYMENT_TARGET_ANDROID
@@ -92,6 +92,6 @@ LOCAL_CFLAGS = -x c -fblocks -std=gnu99 -Wno-trigraphs -fexceptions -DCF_BUILDIN
 #note: not all flags from MakefileLinux have been ported over.
 LOCAL_LDFLAGS = -fpic 
 
-include $(JNIPATH)/clang-extras.mk
-
 include $(BUILD_STATIC_LIBRARY)
+
+$(call import-module,libBlocksRuntime)
